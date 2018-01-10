@@ -90,4 +90,4 @@ Thanks to:
 
 ## License
 
-[[LICENSE]](/LICENSE).
+[[LICENSE]](/LICENSE). (e.g. MIT License)
