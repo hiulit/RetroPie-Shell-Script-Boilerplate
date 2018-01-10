@@ -16,8 +16,8 @@ home="$(find /home -type d -name RetroPie -print -quit 2>/dev/null)"
 home="${home%/RetroPie}"
 
 readonly SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-readonly SCRIPT_TITLE=""
-readonly SCRIPT_DESCRIPTION=""
+readonly SCRIPT_TITLE="[SCRIPT_TITLE]"
+readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
 # If you want to use a config file, uncomment the variable below and enter a name.
 # readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE_NAME]"
 
@@ -84,7 +84,7 @@ function get_options() {
         exit 0
     else
         case "$1" in
-#H -h, --help                                   Print the help message and exit.
+#H -h, --help                               Print the help message and exit.
             -h|--help)
                 echo
                 echo "$SCRIPT_TITLE"
@@ -121,7 +121,7 @@ function main() {
         exit 1
     fi
     
-    check_dependencies
+    #~ check_dependencies
     
     # If you need to check if sudo is used, uncomment the code below.
     # Remember to add 'sudo' in 'usage' and 'help'.
