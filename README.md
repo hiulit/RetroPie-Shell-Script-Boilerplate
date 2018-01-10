@@ -67,6 +67,10 @@ Print the help message and exit.
 
 [CONFIG_FILE_DESCRIPTION]
 
+**COMMENTS:**
+- **Copy and paste your config file.**
+- **Remember to remove these comments.**
+
 ```
 # Settings for [SCRIPT_TITLE] (e.g. RetroPie Shell Script Boilerplate)
 
