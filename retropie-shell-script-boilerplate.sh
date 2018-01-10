@@ -4,6 +4,7 @@
 # [SCRIPT_DESCRIPTION] (e.g. A template for building shell scripts for RetroPie.)
 #
 # Author: [AUTHOR] (e.g. hiulit)
+# If you have the script in a GitHub Repository, use the comments below. If not, just remove them.
 # Repository: [REPOSITORY_URL] (e.g. https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate)
 # Issues: [REPOSITORY_ISSUES_URL] (e.g. https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate/issues)
 # License: [LICENSE] [LICENSE_URL] (e.g. MIT https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate/blob/master/LICENSE)
@@ -121,7 +122,7 @@ function main() {
         exit 1
     fi
     
-    #~ check_dependencies
+    check_dependencies
     
     # If you need to check if sudo is used, uncomment the code below.
     # Remember to add 'sudo' in 'usage' and 'help'.
