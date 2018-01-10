@@ -69,6 +69,7 @@ Print the help message and exit.
 
 **COMMENTS:**
 - **Copy and paste your config file.**
+- **If the config file is too big, maybe it's not a good idea to add it here.**
 - **Remember to remove these comments.**
 
 ```
