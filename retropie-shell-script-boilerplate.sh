@@ -67,7 +67,7 @@ function check_argument() {
 
 function usage() {
     echo
-    echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the scripts needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]).
+    echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]).
     echo
     echo "Use '--help' to see all the options."
     echo
@@ -90,7 +90,7 @@ function get_options() {
                 echo "$SCRIPT_TITLE"
                 echo "$SCRIPT_DESCRIPTION"
                 echo
-                echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the scripts needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]).
+                echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]).
                 echo
                 echo "OPTIONS:"
                 echo
