@@ -76,7 +76,7 @@ function usage() {
 # Add your own functions here.
 
 # You can add as many options as you want.
-# To add a new option -> Copy and paste from '#H -o, --option ...' until ';;' and make the desired changes.
+# To add a new option -> Copy and paste from '#H -[O], --[OPTION] ...' until ';;' and make the desired changes.
 # If you want to align the descriptions of the options, just play with adding/removing spaces/tabs :P
 function get_options() {
     if [[ -z "$1" ]]; then
@@ -99,8 +99,8 @@ function get_options() {
                 exit 0
                 ;;
 
-#H -o, --option (e.g '-v, --version')       Description of the option (e.g. Show version of the script).       
-            -o|--option)
+#H -[O], --[OPTION] (e.g '-v, --version')       [OPTION_DESCRIPTION] (e.g. Show script version.).       
+            -[O]|--[OPTION])
                 # If the option has arguments, uncomment the code below.
                 # check_argument "$1" "$2" || exit 1
                 # shift
