@@ -49,8 +49,8 @@ function check_argument() {
 
 # If you are using a config file, uncomment set_config() and get_config().
 # USAGE:
-# set_config "[KEY]" "[VALUE]" - Sets the VALUE to the KEY
-# get_config "[KEY]" - Returns the KEY's VALUE
+# set_config "[KEY]" "[VALUE]" - Sets the VALUE to the KEY in $SCRIPT_CFG.
+# get_config "[KEY]" - Returns the KEY's VALUE in $SCRIPT_CFG.
 
 # function set_config() {
 #     sed -i "s|^\($1\s*=\s*\).*|\1\"$2\"|" "$SCRIPT_CFG"
@@ -76,7 +76,8 @@ function usage() {
 # Add your own functions here.
 
 # You can add as many options as you want.
-# To add a new option, copy and paste from '#H -o, --option ...' until ';;'
+# To add a new option -> Copy and paste from '#H -o, --option ...' until ';;' and make the desired changes.
+# If you want to align the descriptions of the options, just play with adding/removing spaces/tabs :P
 function get_options() {
     if [[ -z "$1" ]]; then
         usage
@@ -93,7 +94,7 @@ function get_options() {
                 echo
                 echo "OPTIONS:"
                 echo
-                sed '/^#H /!d; s/^#H //' "$0" # Prints all the options.
+                sed '/^#H /!d; s/^#H //' "$0"
                 echo
                 exit 0
                 ;;
