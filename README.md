@@ -32,6 +32,10 @@ Use '--help' to see all the options.
 
 ## Options
 
+**COMMENTS:**
+- **Add as many --[OPTION]: [OPTION_DESCRIPTION] as you need.**
+- **Remember to remove these comments.**
+
 ```
 --help: Print the help message and exit.
 --[OPTION]: [OPTION_DESCRIPTION] (e.g --version: Show script version.)
