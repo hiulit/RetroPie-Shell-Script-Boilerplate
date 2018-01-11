@@ -22,7 +22,7 @@ readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
 # If you want to use a config file, uncomment the variable below and enter a name.
 # readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE_NAME]"
 
-# Add more variables here.
+# Add your own variables here.
 
 function is_retropie() {
     [[ -d "$home/RetroPie" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
@@ -68,7 +68,7 @@ function check_argument() {
 
 function usage() {
     echo
-    echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]).
+    echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]). Don't change [OPTIONS]! Remember to remove this comment.
     echo
     echo "Use '--help' to see all the options."
     echo
@@ -91,7 +91,7 @@ function get_options() {
                 echo "$SCRIPT_TITLE"
                 echo "$SCRIPT_DESCRIPTION"
                 echo
-                echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]).
+                echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]). Don't change [OPTIONS]! Remember to remove this comment.
                 echo
                 echo "OPTIONS:"
                 echo
@@ -100,14 +100,14 @@ function get_options() {
                 exit 0
                 ;;
 
-#H -[O], --[OPTION] (e.g '-v, --version')       [OPTION_DESCRIPTION] (e.g. Show script version.).       
+#H -[O], --[OPTION] (e.g '-v, --version')       [OPTION_DESCRIPTION] (e.g. Show script version.).
             -[O]|--[OPTION])
                 # If the option has arguments, uncomment the code below.
                 # check_argument "$1" "$2" || exit 1
                 # shift
-                
+
                 # Add the functions for this options here.
-                ;;        
+                ;;
             *)
                 echo "ERROR: invalid option '$1'" >&2
                 exit 2
@@ -121,9 +121,9 @@ function main() {
         echo "ERROR: RetroPie is not installed. Aborting ..." >&2
         exit 1
     fi
-    
+
     check_dependencies
-    
+
     # If you need to check if sudo is used, uncomment the code below.
     # Remember to add 'sudo' in 'usage' and 'help'.
     # if [[ "$(id -u)" -ne 0 ]]; then

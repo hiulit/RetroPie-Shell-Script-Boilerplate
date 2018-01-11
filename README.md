@@ -104,8 +104,8 @@ See [CONTRIBUTING](/CONTRIBUTING.md).
 
 Thanks to:
 
-* This person.
-* This other person.
+* That person.
+* That other person.
 
 ## License
 
