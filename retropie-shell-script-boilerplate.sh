@@ -1,32 +1,44 @@
 #!/usr/bin/env bash
 
-# [SCRIPT_TITLE] (e.g. Retropie Shell Script Boilerplate.)
+# [SCRIPT_NAME] (e.g.: script_template.sh)
 # [SCRIPT_DESCRIPTION] (e.g. A template for building shell scripts for RetroPie.)
 #
 # Author: [AUTHOR] (e.g. hiulit)
-# If you have the script in a GitHub Repository, use the comments below. If not, just remove them.
-# Repository: [REPOSITORY_URL] (e.g. https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate)
-# Issues: [REPOSITORY_ISSUES_URL] (e.g. https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate/issues)
+# Repository: [REPO_URL] (e.g. https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate)
 # License: [LICENSE] [LICENSE_URL] (e.g. MIT https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate/blob/master/LICENSE)
 #
 # Requirements:
 # - RetroPie x.x.x (e.g. RetroPie 4.x.x)
-# - [NAME_OF_THE_PACKAGE] package (e.g. libav-tools package)
+# - [PACKAGE_NAME] (e.g. libav-tools)
 
-home="$(find /home -type d -name RetroPie -print -quit 2>/dev/null)"
-home="${home%/RetroPie}"
+# globals ####################################################################
 
-readonly SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-readonly SCRIPT_TITLE="[SCRIPT_TITLE]"
-readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
-# If you want to use a config file, uncomment the variable below and enter a name.
-# readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE_NAME]"
+# if script is called via sudo, detect the user who called it and the homedir.
+user="$SUDO_USER"
+[[ -z "$user" ]] && user="$(id -un)"
+home="$(eval echo ~$user)"
+
+readonly RP_DIR="$home/RetroPie"
+readonly CONFIG_DIR="/opt/retropie/configs"
+readonly SCRIPT_DIR="$(cd "$(dirname $0)" && pwd)"
+readonly SCRIPT_NAME="$(basename "$0")"
+readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
+
+# Other variables that can be useful
+#readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE]"
+#readonly GIT_REPO="[REPO_URL]"
+#readonly SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
+#readonly ROMS_DIR="$RP_DIR/roms"
 
 # Add your own variables here.
+
+
+# functions ##################################################################
 
 function is_retropie() {
     [[ -d "$home/RetroPie" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
 }
+
 
 function check_dependencies() {
     if ! which [COMMAND_TO_TEST] > /dev/null; then # (e.g if ! which git > /dev/null)
@@ -35,6 +47,7 @@ function check_dependencies() {
         exit 1
     fi
 }
+
 
 function check_argument() {
     # This method doesn't accept arguments starting with '-'.
@@ -47,6 +60,7 @@ function check_argument() {
         return 1
     fi
 }
+
 
 # If you are using a config file, uncomment set_config() and get_config().
 # USAGE:
@@ -65,6 +79,7 @@ function check_argument() {
 #     config="${config#\"}"
 #     echo "$config"
 # }
+
 
 function usage() {
     echo
