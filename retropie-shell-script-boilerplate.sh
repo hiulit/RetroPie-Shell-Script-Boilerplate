@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-
 # [SCRIPT_NAME] (e.g.: script_template.sh)
+#
+# [SCRIPT_TITLE] (e.g.: RetroPie Shell Script Boilerplate)
 # [SCRIPT_DESCRIPTION] (e.g. A template for building shell scripts for RetroPie.)
 #
 # Author: [AUTHOR] (e.g. hiulit)
@@ -11,12 +12,17 @@
 # - RetroPie x.x.x (e.g. RetroPie 4.x.x)
 # - [PACKAGE_NAME] (e.g. libav-tools)
 
-# globals ####################################################################
+# Globals ####################################################################
 
-# if script is called via sudo, detect the user who called it and the homedir.
+# If the script is called via sudo, detect the user who called it and the homedir.
 user="$SUDO_USER"
 [[ -z "$user" ]] && user="$(id -un)"
 home="$(eval echo ~$user)"
+
+# If the script is called in '/etc/rc.local' and you're having trouble with the user being 'sudo' instead of 'pi',
+# try commenting the code above and uncommenting the code below.
+#home="$(find /home -type d -name RetroPie -print -quit 2>/dev/null)"
+#home="${home%/RetroPie}"
 
 readonly RP_DIR="$home/RetroPie"
 readonly CONFIG_DIR="/opt/retropie/configs"
@@ -30,10 +36,13 @@ readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
 #readonly SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
 #readonly ROMS_DIR="$RP_DIR/roms"
 
+
+# Variables ##################################################################
+
 # Add your own variables here.
 
 
-# functions ##################################################################
+# Functions ##################################################################
 
 function is_retropie() {
     [[ -d "$home/RetroPie" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
@@ -62,7 +71,7 @@ function check_argument() {
 }
 
 
-# If you are using a config file, uncomment set_config() and get_config().
+# If you are using the config file, uncomment set_config() and get_config().
 # USAGE:
 # set_config "[KEY]" "[VALUE]" - Sets the VALUE to the KEY in $SCRIPT_CFG.
 # get_config "[KEY]" - Returns the KEY's VALUE in $SCRIPT_CFG.
