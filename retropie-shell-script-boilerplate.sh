@@ -19,8 +19,10 @@ user="$SUDO_USER"
 [[ -z "$user" ]] && user="$(id -un)"
 home="$(eval echo ~$user)"
 
-# If the script is called in '/etc/rc.local' and you're having trouble with the user being 'sudo' instead of 'pi',
-# try commenting the code above and uncommenting the code below.
+# If you really need that the script is run by root user (e.g. script called
+# from '/etc/rc.local') the approach below can work better to get the homedir
+# of the RetroPie user.
+# Comment the code above and uncomment the code below.
 #home="$(find /home -type d -name RetroPie -print -quit 2>/dev/null)"
 #home="${home%/RetroPie}"
 
