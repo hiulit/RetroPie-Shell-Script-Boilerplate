@@ -28,6 +28,8 @@ readonly RP_DIR="$home/RetroPie"
 readonly CONFIG_DIR="/opt/retropie/configs"
 readonly SCRIPT_DIR="$(cd "$(dirname $0)" && pwd)"
 readonly SCRIPT_NAME="$(basename "$0")"
+readonly SCRIPT_TITLE="[SCRIPT_TITLE]"
+readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
 readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
 
 # Other variables that can be useful
