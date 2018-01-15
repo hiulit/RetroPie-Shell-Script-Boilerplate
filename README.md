@@ -14,7 +14,7 @@ sudo chmod +x [SCRIPT_NAME].sh (e.g. retropie-shell-script-boilerplate)
 ## Usage
 
 **COMMENTS:**
-- **Add 'sudo' before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
+- **Add `sudo` before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
 - **Don't change `[OPTIONS]`!**
 - **Remember to remove these comments.**
 
@@ -50,7 +50,7 @@ Print the help message and exit.
 #### Example
 
 **COMMENTS:**
-- **Add 'sudo' before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
+- **Add `sudo` before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
 - **Remember to remove these comments.**
 
 `./[SCRIPT_NAME].sh --help (e.g. retropie-shell-script-boilerplate)`
@@ -62,7 +62,7 @@ Print the help message and exit.
 #### Example
 
 **COMMENTS:**
-- **Add 'sudo' before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
+- **Add `sudo` before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
 - **Remember to remove these comments.**
 
 `./[SCRIPT_NAME].sh --[OPTION] (e.g. retropie-shell-script-boilerplate)`
