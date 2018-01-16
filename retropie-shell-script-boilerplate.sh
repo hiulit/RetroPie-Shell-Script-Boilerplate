@@ -53,8 +53,8 @@ function is_retropie() {
     [[ -d "$home/RetroPie" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
 }
 
-# If your script has dependencies, don't forget to use
-# the DEPENDENCIES variable on the definitions above.
+# If your script has dependencies, just use the DEPENDENCIES
+# variable on the definitions above. Otherwise, leave it as is.
 function check_dependencies() {
     local pkg
     local err=0
