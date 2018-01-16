@@ -39,6 +39,7 @@ readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
 #readonly GIT_REPO="[REPO_URL]"
 #readonly SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
 #readonly ROMS_DIR="$RP_DIR/roms"
+#readonly DEPENDENCIES=([PACKAGE_1] [PACKAGE_2] [PACKAGE_N])
 
 
 # Variables ##################################################################
@@ -52,13 +53,19 @@ function is_retropie() {
     [[ -d "$home/RetroPie" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
 }
 
-
+# If your script has dependencies, don't# forget to use
+# the DEPENDENCIES variable on the definitions above.
 function check_dependencies() {
-    if ! which [COMMAND_TO_TEST] > /dev/null; then # (e.g if ! which git > /dev/null)
-        echo "ERROR: The [NAME_OF_THE_PACKAGE] package is not installed!" >&2 # (e.g. git)
-        echo "Please, install it with 'sudo apt-get install [NAME_OF_THE_PACKAGE]'." >&2 # (e.g. git)
-        exit 1
-    fi
+    local pkg
+    local err=0
+    for pkg in "${DEPENDENCIES[@]}"; do
+        if ! which "$pkg" &> /dev/null; then
+            echo "ERROR: The \"$pkg\" package is not installed!" >&2
+            echo "Try to install it with 'sudo apt-get install $pkg'." >&2
+            err=1
+        fi
+    done
+    [[ "$err" != "0" ]] && exit 1
 }
 
 
