@@ -46,6 +46,64 @@ readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
 # Add your own variables here.
 
 
+# dialog functions ##########################################################
+# If you want to provide dialog boxes similar to those used on retropie_setup
+# you can use the functions below.
+# See the examples of usage on right above functions declarations.
+
+# adapt it as you wish
+BACKTITLE="$SCRIPT_DESCRIPTION"
+
+# dialogMenu example of usage:
+#options=( tag1 option1 tag2 option2 N optionN )
+#dialogMenu "Text describing the options" "${options[@]}"
+function dialogMenu() {
+    local text="$1"
+    shift
+    dialog --no-mouse \
+        --backtitle "$BACKTITLE" \
+        --cancel-label "Back" \
+        --ok-label "OK" \
+        --menu "$text\n\nChoose an option." 17 75 10 "$@" \
+        2>&1 > /dev/tty
+}
+
+# dialogMenuHelp example of usage:
+#options=(1 option1 "Help message 1" 2 option2 "Help message 2" N optionN "Help message N")
+#dialogMenuHelp "Text explaining the options" "${options[@]}"
+function dialogMenuHelp() {
+    local text="$1"
+    shift
+    dialog --no-mouse \
+        --backtitle "$BACKTITLE" \
+        --cancel-label "Back" \
+        --ok-label "OK" \
+        --item-help \
+        --menu "$text\n\nChoose an option." 17 75 10 "$@" \
+        2>&1 > /dev/tty
+}
+
+# dialogYesNo example of usage:
+#dialogYesNo "Do you want to continue?"
+function dialogYesNo() {
+    dialog --no-mouse --backtitle "$BACKTITLE" --yesno "$@" 15 75 2>&1 > /dev/tty
+}
+
+# dialogMsg example of usage
+#dialogMsg "Failed to install package_name. Try again later."
+function dialogMsg() {
+    dialog --no-mouse --ok-label "OK" --backtitle "$BACKTITLE" --msgbox "$@" 20 70 2>&1 > /dev/tty
+}
+
+# dialogInfo example of usage:
+#dialogInfo "Please wait. Installing package_name..."
+function dialogInfo {
+    dialog --infobox "$@" 8 50 2>&1 >/dev/tty
+}
+
+# end of dialog functions ###################################################
+
+
 # Functions ##################################################################
 
 function is_retropie() {
