@@ -17,8 +17,8 @@
 # If the script is called via sudo, detect the user who called it and the homedir.
 user="$SUDO_USER"
 [[ -z "$user" ]] && user="$(id -un)"
-home="$(eval echo ~$user)"
 
+home="$(eval echo ~$user)"
 # If you really need that the script is run by root user (e.g. script called
 # from '/etc/rc.local') the approach below can work better to get the homedir
 # of the RetroPie user.
@@ -28,6 +28,8 @@ home="$(eval echo ~$user)"
 
 readonly RP_DIR="$home/RetroPie"
 readonly CONFIG_DIR="/opt/retropie/configs"
+
+readonly SCRIPT_VERSION="0.0.0" # Use Semantinc Versioning https://semver.org/
 readonly SCRIPT_DIR="$(cd "$(dirname $0)" && pwd)"
 readonly SCRIPT_NAME="$(basename "$0")"
 readonly SCRIPT_TITLE="[SCRIPT_TITLE]"
@@ -127,7 +129,10 @@ function get_options() {
                 echo
                 exit 0
                 ;;
-
+#H -v, --version                               Show script version.
+            -v|--version)
+                echo "$SCRIPT_VERSION"
+                ;;
 #H -[O], --[OPTION] (e.g '-v, --version')       [OPTION_DESCRIPTION] (e.g. Show script version.).
             -[O]|--[OPTION])
                 # If the option has arguments, uncomment the code below.
