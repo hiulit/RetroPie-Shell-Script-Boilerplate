@@ -39,11 +39,12 @@ readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
 #readonly SCRIPTMODULE_DIR="/opt/retropie/supplementary/[SCRIPTMODULE_NAME]" # Uncomment if you want/need to use a scriptmoodule.
 
 # Other variables that can be useful
+#readonly DEPENDENCIES=("[PACKAGE_1]" "[PACKAGE_2]" "[PACKAGE_N]")
 #readonly ROMS_DIR="$RP_DIR/roms"
 #readonly ES_THEMES_DIR="/etc/emulationstation/themes"
 #readonly RCLOCAL="/etc/rc.local"
 #readonly GIT_REPO_URL="[REPO_URL]"
-#readonly GIT_SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
+#readonly GIT_SCRIPT_URL="[REPO_URL]/[path/to/script].sh
 
 
 # Variables ##################################################################
@@ -63,12 +64,19 @@ function is_sudo() {
 }
 
 
+# If your script has dependencies, just use the DEPENDENCIES variable on the definitions above.
+# Otherwise, leave it as is.
 function check_dependencies() {
-    if ! which [COMMAND_TO_TEST] > /dev/null; then # (e.g if ! which git > /dev/null)
-        echo "ERROR: The [NAME_OF_THE_PACKAGE] package is not installed!" >&2 # (e.g. git)
-        echo "Please, install it with 'sudo apt-get install [NAME_OF_THE_PACKAGE]'." >&2 # (e.g. git)
-        exit 1
-    fi
+    local pkg
+    local err=0
+    for pkg in "${DEPENDENCIES[@]}"; do
+        if ! which "$pkg" &> /dev/null; then
+            echo "ERROR: The \"$pkg\" package is not installed!" >&2
+            echo "Try to install it with 'sudo apt-get install $pkg'." >&2
+            err=1
+        fi
+    done
+    [[ "$err" != "0" ]] && exit 1
 }
 
 
