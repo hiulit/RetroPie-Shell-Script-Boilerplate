@@ -133,6 +133,7 @@ function get_options() {
             -h|--help)
                 echo
                 echo "$SCRIPT_TITLE"
+                echo for ((i=1; i<="${#SCRIPT_TITLE}"; i+=1)); do [[ -n "$dashes" ]] && dashes+="-" || dashes="-"; done && echo "$dashes"
                 echo "$SCRIPT_DESCRIPTION"
                 echo
                 echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]). Don't change [OPTIONS]! Remember to remove this comment.
