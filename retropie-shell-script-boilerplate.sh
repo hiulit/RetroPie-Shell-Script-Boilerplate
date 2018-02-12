@@ -54,6 +54,9 @@ function is_retropie() {
     [[ -d "$RP_DIR" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
 }
 
+function is_sudo() {
+    [[ "$(id -u)" -eq 0 ]]
+}
 
 function check_dependencies() {
     if ! which [COMMAND_TO_TEST] > /dev/null; then # (e.g if ! which git > /dev/null)
@@ -150,20 +153,20 @@ function get_options() {
 }
 
 function main() {
+    # If you need to check if sudo is used, uncomment the code below.
+    # Remember to add 'sudo' in 'usage' and 'help'.
+    # if ! is_sudo; then
+    #     echo "ERROR: Script must be run under sudo."
+    #     usage
+    #     exit 1
+    # fi
+
     if ! is_retropie; then
         echo "ERROR: RetroPie is not installed. Aborting ..." >&2
         exit 1
     fi
 
     check_dependencies
-
-    # If you need to check if sudo is used, uncomment the code below.
-    # Remember to add 'sudo' in 'usage' and 'help'.
-    # if [[ "$(id -u)" -ne 0 ]]; then
-    #     echo "ERROR: Script must be run under sudo." >&2
-    #     usage
-    #     exit 1
-    # fi
 
     get_options "$@"
 }
