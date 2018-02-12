@@ -55,6 +55,18 @@ Print the help message and exit.
 
 `./[SCRIPT_NAME].sh --help (e.g. retropie-shell-script-boilerplate)`
 
+### `--version`
+
+Show script version.
+
+#### Example
+
+**COMMENTS:**
+- **Add `sudo` before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
+- **Remember to remove these comments.**
+
+`./[SCRIPT_NAME].sh --version (e.g. retropie-shell-script-boilerplate)`
+
 ### `--[OPTION]`
 
 [OPTION_DESCRIPTION]
