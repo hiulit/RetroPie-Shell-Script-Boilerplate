@@ -39,9 +39,11 @@ readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
 #readonly SCRIPTMODULE_DIR="/opt/retropie/supplementary/[SCRIPTMODULE_NAME]" # Uncomment if you want/need to use a scriptmoodule.
 
 # Other variables that can be useful
-#readonly GIT_REPO="[REPO_URL]"
-#readonly SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
 #readonly ROMS_DIR="$RP_DIR/roms"
+#readonly ES_THEMES_DIR="/etc/emulationstation/themes"
+#readonly RCLOCAL="/etc/rc.local"
+#readonly GIT_REPO_URL="[REPO_URL]"
+#readonly GIT_SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
 
 
 # Variables ##################################################################
