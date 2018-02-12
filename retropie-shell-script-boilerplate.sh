@@ -54,9 +54,11 @@ function is_retropie() {
     [[ -d "$RP_DIR" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
 }
 
+
 function is_sudo() {
     [[ "$(id -u)" -eq 0 ]]
 }
+
 
 function check_dependencies() {
     if ! which [COMMAND_TO_TEST] > /dev/null; then # (e.g if ! which git > /dev/null)
@@ -81,21 +83,31 @@ function check_argument() {
 
 
 # If you are using the config file, uncomment set_config() and get_config().
+# In addition, you can also uncomment reset_config() if you need it.
 # USAGE:
 # set_config "[KEY]" "[VALUE]" - Sets the VALUE to the KEY in $SCRIPT_CFG.
 # get_config "[KEY]" - Returns the KEY's VALUE in $SCRIPT_CFG.
-
+# reset_config - Resets all VALUES in $SCRIPT_CFG.
+#
 # function set_config() {
 #     sed -i "s|^\($1\s*=\s*\).*|\1\"$2\"|" "$SCRIPT_CFG"
 #     echo "\"$1\" set to \"$2\"."
 # }
-
+#
+#
 # function get_config() {
 #     local config
 #     config="$(grep -Po "(?<=^$1 = ).*" "$SCRIPT_CFG")"
 #     config="${config%\"}"
 #     config="${config#\"}"
 #     echo "$config"
+# }
+#
+#
+# function reset_config() {
+#     while read line; do
+#         set_config "$line" ""
+#     done < <(grep -Po ".*?(?=\ = )" "$SCRIPT_CFG")
 # }
 
 
