@@ -17,8 +17,8 @@
 # If the script is called via sudo, detect the user who called it and the homedir.
 user="$SUDO_USER"
 [[ -z "$user" ]] && user="$(id -un)"
-home="$(eval echo ~$user)"
 
+home="$(eval echo ~$user)"
 # If you really need that the script is run by root user (e.g. script called
 # from '/etc/rc.local') the approach below can work better to get the homedir
 # of the RetroPie user.
@@ -28,18 +28,23 @@ home="$(eval echo ~$user)"
 
 readonly RP_DIR="$home/RetroPie"
 readonly CONFIG_DIR="/opt/retropie/configs"
+
+readonly SCRIPT_VERSION="0.0.0" # Use Semantinc Versioning https://semver.org/
 readonly SCRIPT_DIR="$(cd "$(dirname $0)" && pwd)"
 readonly SCRIPT_NAME="$(basename "$0")"
+readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
+#readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE]" # Uncomment if you want/need to use a config file.
 readonly SCRIPT_TITLE="[SCRIPT_TITLE]"
 readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
-readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
+#readonly SCRIPTMODULE_DIR="/opt/retropie/supplementary/[SCRIPTMODULE_NAME]" # Uncomment if you want/need to use a scriptmoodule.
 
 # Other variables that can be useful
-#readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE]"
-#readonly GIT_REPO="[REPO_URL]"
-#readonly SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
+#readonly DEPENDENCIES=("[PACKAGE_1]" "[PACKAGE_2]" "[PACKAGE_N]")
 #readonly ROMS_DIR="$RP_DIR/roms"
-#readonly DEPENDENCIES=([PACKAGE_1] [PACKAGE_2] [PACKAGE_N])
+#readonly ES_THEMES_DIR="/etc/emulationstation/themes"
+#readonly RCLOCAL="/etc/rc.local"
+#readonly GIT_REPO_URL="[REPO_URL]"
+#readonly GIT_SCRIPT_URL="[REPO_URL]/[path/to/script].sh
 
 
 # Variables ##################################################################
@@ -50,11 +55,17 @@ readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
 # Functions ##################################################################
 
 function is_retropie() {
-    [[ -d "$home/RetroPie" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
+    [[ -d "$RP_DIR" && -d "$home/.emulationstation" && -d "/opt/retropie" ]]
 }
 
-# If your script has dependencies, just use the DEPENDENCIES
-# variable on the definitions above. Otherwise, leave it as is.
+
+function is_sudo() {
+    [[ "$(id -u)" -eq 0 ]]
+}
+
+
+# If your script has dependencies, just use the DEPENDENCIES variable on the definitions above.
+# Otherwise, leave it as is.
 function check_dependencies() {
     local pkg
     local err=0
@@ -83,15 +94,18 @@ function check_argument() {
 
 
 # If you are using the config file, uncomment set_config() and get_config().
+# In addition, you can also uncomment reset_config() if you need it.
 # USAGE:
 # set_config "[KEY]" "[VALUE]" - Sets the VALUE to the KEY in $SCRIPT_CFG.
 # get_config "[KEY]" - Returns the KEY's VALUE in $SCRIPT_CFG.
-
+# reset_config - Resets all VALUES in $SCRIPT_CFG.
+#
 # function set_config() {
 #     sed -i "s|^\($1\s*=\s*\).*|\1\"$2\"|" "$SCRIPT_CFG"
 #     echo "\"$1\" set to \"$2\"."
 # }
-
+#
+#
 # function get_config() {
 #     local config
 #     config="$(grep -Po "(?<=^$1 = ).*" "$SCRIPT_CFG")"
@@ -99,14 +113,20 @@ function check_argument() {
 #     config="${config#\"}"
 #     echo "$config"
 # }
+#
+#
+# function reset_config() {
+#     while read line; do
+#         set_config "$line" ""
+#     done < <(grep -Po ".*?(?=\ = )" "$SCRIPT_CFG")
+# }
 
 
 function usage() {
     echo
     echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]). Don't change [OPTIONS]! Remember to remove this comment.
     echo
-    echo "Use '--help' to see all the options."
-    echo
+    echo "Use '$0 --help' to see all the options." # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. Use 'sudo $0 --help' ...). Remember to remove this comment.
 }
 
 # Add your own functions here.
@@ -124,6 +144,7 @@ function get_options() {
             -h|--help)
                 echo
                 echo "$SCRIPT_TITLE"
+                echo for ((i=1; i<="${#SCRIPT_TITLE}"; i+=1)); do [[ -n "$dashes" ]] && dashes+="-" || dashes="-"; done && echo "$dashes"
                 echo "$SCRIPT_DESCRIPTION"
                 echo
                 echo "USAGE: $0 [OPTIONS]" # Add 'sudo' before '$0' if the script needs to be run under sudo (e.g. USAGE: sudo $0 [OPTIONS]). Don't change [OPTIONS]! Remember to remove this comment.
@@ -134,7 +155,10 @@ function get_options() {
                 echo
                 exit 0
                 ;;
-
+#H -v, --version                               Show script version.
+            -v|--version)
+                echo "$SCRIPT_VERSION"
+                ;;
 #H -[O], --[OPTION] (e.g '-v, --version')       [OPTION_DESCRIPTION] (e.g. Show script version.).
             -[O]|--[OPTION])
                 # If the option has arguments, uncomment the code below.
@@ -152,20 +176,20 @@ function get_options() {
 }
 
 function main() {
+    # If you need to check if sudo is used, uncomment the code below.
+    # Remember to add 'sudo' in 'usage' and 'help'.
+    # if ! is_sudo; then
+    #     echo "ERROR: Script must be run under sudo."
+    #     usage
+    #     exit 1
+    # fi
+
     if ! is_retropie; then
         echo "ERROR: RetroPie is not installed. Aborting ..." >&2
         exit 1
     fi
 
     check_dependencies
-
-    # If you need to check if sudo is used, uncomment the code below.
-    # Remember to add 'sudo' in 'usage' and 'help'.
-    # if [[ "$(id -u)" -ne 0 ]]; then
-    #     echo "ERROR: Script must be run under sudo." >&2
-    #     usage
-    #     exit 1
-    # fi
 
     get_options "$@"
 }
