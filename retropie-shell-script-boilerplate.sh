@@ -32,12 +32,13 @@ readonly CONFIG_DIR="/opt/retropie/configs"
 readonly SCRIPT_VERSION="0.0.0" # Use Semantinc Versioning https://semver.org/
 readonly SCRIPT_DIR="$(cd "$(dirname $0)" && pwd)"
 readonly SCRIPT_NAME="$(basename "$0")"
+readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
+#readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE]" # Uncomment if you want/need to use a config file.
 readonly SCRIPT_TITLE="[SCRIPT_TITLE]"
 readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
-readonly SCRIPT_FULL="$SCRIPT_DIR/$SCRIPT_NAME"
+#readonly SCRIPTMODULE_DIR="/opt/retropie/supplementary/[SCRIPTMODULE_NAME]" # Uncomment if you want/need to use a scriptmoodule.
 
 # Other variables that can be useful
-#readonly SCRIPT_CFG="$SCRIPT_DIR/[CONFIG_FILE]"
 #readonly GIT_REPO="[REPO_URL]"
 #readonly SCRIPT_URL="[REPO_URL]/[path/to/script.sh]
 #readonly ROMS_DIR="$RP_DIR/roms"
