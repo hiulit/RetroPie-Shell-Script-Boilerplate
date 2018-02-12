@@ -68,15 +68,34 @@ function is_sudo() {
 # Otherwise, leave it as is.
 function check_dependencies() {
     local pkg
-    local err=0
-    for pkg in "${DEPENDENCIES[@]}"; do
-        if ! which "$pkg" &> /dev/null; then
-            echo "ERROR: The \"$pkg\" package is not installed!" >&2
-            echo "Try to install it with 'sudo apt-get install $pkg'." >&2
-            err=1
+    for pkg in "${DEPENDENCIES[@]}";do
+        if ! dpkg-query -W -f='${Status}' "$pkg" | grep -qwo "installed"; then
+            echo "ERROR: The '$pkg' package is not installed!" >&2
+            echo "Would you like to install it now?"
+            local options=("Yes" "No")
+            local option
+            select option in "${options[@]}"; do
+                case "$option" in
+                    Yes)
+                        if ! which apt-get > /dev/null; then
+                            echo "ERROR: Can't install '$pkg' automatically. Try to install it manually." >&2
+                            exit 1
+                        else
+                            sudo apt-get install "$pkg"
+                            break
+                        fi
+                        ;;
+                    No)
+                        echo "ERROR: Can't launch the script if the '$pkg' package is not installed." >&2
+                        exit 1
+                        ;;
+                    *)
+                        echo "Invalid option. Choose a number between 1 and ${#options[@]}."
+                        ;;
+                esac
+            done
         fi
     done
-    [[ "$err" != "0" ]] && exit 1
 }
 
 
