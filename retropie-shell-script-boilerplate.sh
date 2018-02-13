@@ -38,7 +38,7 @@ readonly SCRIPT_TITLE="[SCRIPT_TITLE]"
 readonly SCRIPT_DESCRIPTION="[SCRIPT_DESCRIPTION]"
 #readonly SCRIPTMODULE_DIR="/opt/retropie/supplementary/[SCRIPTMODULE_NAME]" # Uncomment if you want/need to use a scriptmoodule.
 
-# Other variables that can be useful
+# Other variables that can be useful.
 #readonly DEPENDENCIES=("[PACKAGE_1]" "[PACKAGE_2]" "[PACKAGE_N]")
 #readonly ROMS_DIR="$RP_DIR/roms"
 #readonly ES_THEMES_DIR="/etc/emulationstation/themes"
