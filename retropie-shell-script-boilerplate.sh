@@ -27,7 +27,7 @@ home="$(eval echo ~$user)"
 #home="${home%/RetroPie}"
 
 readonly RP_DIR="$home/RetroPie"
-readonly CONFIG_DIR="/opt/retropie/configs"
+readonly RP_CONFIG_DIR="/opt/retropie/configs"
 
 readonly SCRIPT_VERSION="0.0.0" # Use Semantinc Versioning https://semver.org/
 readonly SCRIPT_DIR="$(cd "$(dirname $0)" && pwd)"
