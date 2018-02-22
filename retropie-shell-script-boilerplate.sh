@@ -69,7 +69,7 @@ function is_sudo() {
 function check_dependencies() {
     local pkg
     for pkg in "${DEPENDENCIES[@]}";do
-        if ! dpkg-query -W -f='${Status}' "$pkg" | grep -qwo "installed"; then
+        if ! dpkg-query -W -f='${Status}' "$pkg" | awk '{print $3}' | grep -q "^installed$"; then
             echo "ERROR: The '$pkg' package is not installed!" >&2
             echo "Would you like to install it now?"
             local options=("Yes" "No")
