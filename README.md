@@ -11,6 +11,13 @@ cd [REPO_NAME]/ (e.g RetroPie-Shell-Script-Boilerplate)
 sudo chmod +x [SCRIPT_NAME].sh (e.g. retropie-shell-script-boilerplate)
 ```
 
+## Updating
+
+```
+cd /home/pi/[REPO_NAME]/ (e.g RetroPie-Shell-Script-Boilerplate)
+git pull
+```
+
 ## Usage
 
 **COMMENTS:**
