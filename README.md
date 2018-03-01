@@ -25,7 +25,7 @@ sudo chmod +x [SCRIPT_NAME].sh (e.g. retropie-shell-script-boilerplate)
 If no options are passed, you will be prompted with a usage example:
 
 ```
-USAGE: sudo ./[SCRIPT_NAME].sh [OPTIONS] (e.g. retropie-shell-script-boilerplate)
+USAGE: ./[SCRIPT_NAME].sh [OPTIONS] (e.g. retropie-shell-script-boilerplate)
 
 Use '--help' to see all the options.
 ```
