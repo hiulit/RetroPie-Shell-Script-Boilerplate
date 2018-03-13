@@ -83,7 +83,7 @@ Show script version.
 - **Add `sudo` before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
 - **Remember to remove these comments.**
 
-`./[SCRIPT_NAME].sh --[OPTION] (e.g. retropie-shell-script-boilerplate)`
+`./[SCRIPT_NAME].sh --[OPTION] (e.g. retropie-shell-script-boilerplate --version)`
 
 ## Config file
 
