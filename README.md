@@ -43,7 +43,8 @@ Use '--help' to see all the options.
 - **Add as many `--[OPTION]: [OPTION_DESCRIPTION]` as you need.**
 - **Remember to remove these comments.**
 
-* `--help` : Print the help message and exit.
+* `--help`: Print the help message and exit.
+* `--version`: Show script version.
 * `--[OPTION]`: [OPTION_DESCRIPTION] (e.g --version: Show script version.)
 
 ## Examples
