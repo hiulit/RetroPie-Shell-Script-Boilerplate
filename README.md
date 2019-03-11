@@ -43,7 +43,8 @@ Use '--help' to see all the options.
 - **Add as many `--[OPTION]: [OPTION_DESCRIPTION]` as you need.**
 - **Remember to remove these comments.**
 
-* `--help+ : Print the help message and exit.
+* `--help`: Print the help message and exit.
+* `--version`: Show script version.
 * `--[OPTION]`: [OPTION_DESCRIPTION] (e.g --version: Show script version.)
 
 ## Examples
@@ -82,7 +83,7 @@ Show script version.
 - **Add `sudo` before `./[SCRIPT_NAME].sh` if the script needs to be run under sudo.**
 - **Remember to remove these comments.**
 
-`./[SCRIPT_NAME].sh --[OPTION] (e.g. retropie-shell-script-boilerplate)`
+`./[SCRIPT_NAME].sh --[OPTION] (e.g. retropie-shell-script-boilerplate --version)`
 
 ## Config file
 
