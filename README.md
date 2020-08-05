@@ -71,9 +71,13 @@ Show example dialog boxes.
 #### Options
 
 * `infobox` - Show an example of an "Info Box".
+![Show an example of an "Info Box"](examples/option-dialog-infobox.png)
 * `yesno` - Show an example of a "Yes/No Box".
+![Show an example of a "Yes/No Box"](examples/option-dialog-yesno.png)
 * `msgbox` - Show an example of a "Message Box".
+![Show an example of a "Message Box"](examples/option-dialog-msgbox.png)
 * `menu` - Show an example of a "Menu Box".
+![Show an example of a "Menu Box"](examples/option-dialog-menu.png)
 
 #### Example
 
