@@ -62,9 +62,9 @@ source "$SCRIPT_DIR/utils/dialogs.sh"
 # If you are using the config file, uncomment set_config() and get_config().
 # In addition, you can also uncomment reset_config() if you need it.
 # USAGE:
-# set_config "[KEY]" "[VALUE]" - Sets the VALUE to the KEY in $SCRIPT_CFG.
-# get_config "[KEY]" - Returns the KEY's VALUE in $SCRIPT_CFG.
-# reset_config - Resets all VALUES in $SCRIPT_CFG.
+# set_config "[KEY]" "[VALUE]" - Sets the VALUE to the KEY in "$SCRIPT_CFG".
+# get_config "[KEY]" - Returns the KEY's VALUE in "$SCRIPT_CFG".
+# reset_config - Resets all VALUES in "$SCRIPT_CFG".
 #
 # function set_config() {
 #     sed -i "s|^\($1\s*=\s*\).*|\1\"$2\"|" "$SCRIPT_CFG"

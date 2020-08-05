@@ -24,6 +24,6 @@ You can help make **[SCRIPT_TITLE]** better by [reporting issues](#issues) or [c
 
 [Pull requests](https://help.github.com/articles/creating-a-pull-request/) are most welcomed! 😃
 
-* Fork **[SCRIPT_TITLE]**: `git clone git@github.com:your-username/[REPOSITORY_NAME].git`.
+* Fork **[SCRIPT_TITLE]**: `git clone git@github.com:[YOUR_USERNAME]/[REPOSITORY_NAME].git`.
 * Create a **new branch** and make the desired changes there.
 * [Create a pull request]([REPOSITORY_URL]/pulls).
