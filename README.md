@@ -5,13 +5,13 @@
 ## Installation
 
 ```
-cd /home/pi/
+cd /home/pi/s
 git clone [REPO_URL] (e.g. https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate)
 cd [REPO_NAME]/ (e.g RetroPie-Shell-Script-Boilerplate)
 sudo chmod +x [SCRIPT_NAME].sh (e.g. retropie-shell-script-boilerplate)
 ```
 
-## Updating
+## Update
 
 ```
 cd /home/pi/[REPO_NAME]/ (e.g RetroPie-Shell-Script-Boilerplate)
@@ -44,6 +44,7 @@ Use '--help' to see all the options.
 - **Remember to remove these comments.**
 
 * `--help`: Print the help message and exit.
+* `--dialog [OPTIONS]`: Show example dialog boxes.
 * `--version`: Show script version.
 * `--[OPTION]`: [OPTION_DESCRIPTION] (e.g --version: Show script version.)
 
@@ -60,6 +61,21 @@ Print the help message and exit.
 - **Remember to remove these comments.**
 
 `./[SCRIPT_NAME].sh --help (e.g. retropie-shell-script-boilerplate)`
+
+### `--dialog [OPTIONS]`
+
+Show example dialog boxes.
+
+#### Options
+
+* `infobox` - Shows an example of an "Info Box".
+* `yesno` - Shows an example of a "Yes/No Box".
+* `msgbox` - Shows an example of a "Message Box".
+* `menu` - Shows an example of a "Menu Box".
+
+#### Example
+
+`./retropie-shell-script-boilerplate --dialog "yesno"`
 
 ### `--version`
 
