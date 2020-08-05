@@ -5,7 +5,7 @@
 ## Installation
 
 ```
-cd /home/pi/s
+cd /home/pi/
 git clone [REPO_URL] (e.g. "https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate")
 cd [REPO_NAME]/ (e.g "RetroPie-Shell-Script-Boilerplate")
 sudo chmod +x [SCRIPT_NAME].sh (e.g. "retropie-shell-script-boilerplate")
