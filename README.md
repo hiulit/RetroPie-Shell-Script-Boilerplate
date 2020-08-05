@@ -68,6 +68,8 @@ Print the help message.
 
 Show example dialog boxes.
 
+Take a look at `utils/dialog.sh` for more documentation on how to use dialogs.
+
 #### Options
 
 * `infobox` - Show an example of an "Info Box".
