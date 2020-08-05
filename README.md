@@ -68,7 +68,7 @@ Print the help message.
 
 Show example dialog boxes.
 
-Take a look at `utils/dialog.sh` for more documentation on how to use dialogs.
+Take a look at [utils/dialog.sh](utils/dialogs.sh) for more documentation on how to use dialogs.
 
 #### Options
 
