@@ -99,7 +99,7 @@ function get_options() {
         exit 0
     else
         case "$1" in
-#H -h, --help                               Print the help message and exit.
+#H -h, --help                               Print the help message.
             -h|--help)
                 echo
                 echo "$SCRIPT_TITLE"

@@ -1,10 +1,10 @@
 # [SCRIPT_TITLE] (e.g. "RetroPie Shell Script Boilerplate")
 
-[SCRIPT_DESCRIPTION] (e.g. "A template for building shell scripts for RetroPie."")
+[SCRIPT_DESCRIPTION] (e.g. "A template for building shell scripts for RetroPie.")
 
 ## Installation
 
-```
+```bash
 cd /home/pi/
 git clone [REPO_URL] (e.g. "https://github.com/hiulit/RetroPie-Shell-Script-Boilerplate")
 cd [REPO_NAME]/ (e.g "RetroPie-Shell-Script-Boilerplate")
@@ -13,7 +13,7 @@ sudo chmod +x [SCRIPT_NAME].sh (e.g. "retropie-shell-script-boilerplate")
 
 ## Update
 
-```
+```bash
 cd /home/pi/[REPO_NAME]/ (e.g "RetroPie-Shell-Script-Boilerplate")
 git pull
 ```
@@ -25,13 +25,13 @@ git pull
 - **Don't change `[OPTIONS]`!**
 - **Remember to remove these comments.**
 
-```
+```bash
 ./[SCRIPT_NAME].sh [OPTIONS] (e.g. "retropie-shell-script-boilerplate)"" 
 ```
 
 If no options are passed, you will be prompted with a usage example:
 
-```
+```bash
 USAGE: ./[SCRIPT_NAME].sh [OPTIONS] (e.g. "retropie-shell-script-boilerplate")
 
 Use '--help' to see all the options.
@@ -43,16 +43,18 @@ Use '--help' to see all the options.
 - **Add as many `--[OPTION]: [OPTION_DESCRIPTION]` as you need.**
 - **Remember to remove these comments.**
 
-* `--help`: Print the help message and exit.
+* `--help`: Print the help message.
 * `--dialog [OPTIONS]`: Show example dialog boxes.
 * `--version`: Show script version.
-* `--[OPTION]`: [OPTION_DESCRIPTION] (e.g "--version: Show script version.")
+* `--[OPTION]`: [OPTION_DESCRIPTION] (e.g "`--version`: Show script version.")
 
 ## Examples
 
 ### `--help`
 
-Print the help message and exit.
+Print the help message.
+
+![Print the help message](examples/option-help.png)
 
 #### Example
 
